@@ -1,0 +1,149 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Rest API",
+    "version": "1.0.0",
+    "title": "swagger"
+  },
+  "host": "localhost",
+  "basePath": "/TS",
+  "tags": [
+    {
+      "name": "TS",
+      "description": "Telephon book"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/TS/registration": {
+      "post": {
+        "tags": [
+          "TS"
+        ],
+        "summary": "Create new telephon",
+        "operationId": "registration",
+        "description": "create",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Create"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
+      }
+    },
+    "/TS/update": {
+      "put": {
+        "tags": [
+          "TS"
+        ],
+        "summary": "update",
+        "description": "update",
+        "operationId": "update",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required":  true,
+            "schema": {
+              "$ref": "#/definitions/Create"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully update"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/TS/delete": {
+      "delete": {
+        "tags": [
+          "TS"
+        ],
+        "summary": "DELETE",
+        "operationId": "delete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete was successful"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        }
+      }
+    },
+    "/TS": {
+      "get": {
+        "tags": [
+          "TS"
+        ],
+        "summary": "Get",
+        "operationId": "get",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+    "definitions": {
+      "Create": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "int",
+            "example": "1"
+          },
+          "name": {
+            "type": "string",
+            "example": "slava"
+          },
+          "surname": {
+            "type": "string",
+            "example": "levickiy"
+          },
+          "telephone": {
+            "type": "string",
+            "example": "+375...."
+          }
+        }
+      }},
+      "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+      }
+    }
+

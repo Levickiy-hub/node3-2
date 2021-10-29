@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        async function login() {
+            await fetch('/api/auth', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ login: document.getElementById('login').value, password: document.getElementById('password').value })
+            })
+                .then((data) => {
+                    return data.json();
+                })
+                .then((data) => {
+                   if(data.message){
+                     alert(data.message)
+                   }else{
+                        console.log(data);
+                        document.location.replace('/resource')
+                    }
+                })
+                .catch(()=>{
+                })
+        }
+    </script>
+    <input id="login" type="text" placeholder="username" name="username" required>
+    <input id="password" type="password" placeholder="password" name="password" required>
+
+    <button type="submit" onclick="login()">Login</button>
+    <button type="reset">Cancel</button>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    fetch("http://localhost:3000/api/pulpits", {
+        method: 'GET',
+        mode: 'no-cors',
+        headers:{'Content-Type':'application/json', 'Accept': 'application/json'}
+    }).then(x=>{
+        return x.json();
+    }).then(t=>{
+        t.forEach((elem)=>{
+            addRow(elem);
+        })
+    }).catch(err=>alert);
+
+    function addRow(elem) {
+        console.log(elem);
+        let faculty;
+        let row = document.createElement('tr');
+        for(let t in elem){
+            let rowCol = document.createElement('td');
+            rowCol.textContent = elem[t];
+            row.appendChild(rowCol);
+            faculty = elem.pulpit;
+        }
+        let rowCol = document.createElement('td');
+        let link = document.createElement('a');
+        link.textContent = 'DELETE';
+        link.href = `http://localhost:3000/api/pulpits/${faculty}`;
+        link.addEventListener("click", (e)=>{
+            e.preventDefault();
+            Delete(link.href);
+        })
+        rowCol.appendChild(link);
+        row.appendChild(rowCol);
+        document.getElementById('table').appendChild(row);
+
+    }
+
+    function Post() {
+        fetch("http://localhost:3000/api/pulpits", {
+            method: 'POST',
+            mode: 'no-cors',
+            headers:{'Content-Type':'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify({pulpit:PULPIT.value, pulpit_name: PULPIT_NAME.value, faculty:FACULTY.value})
+        }).then(t=>t.json());
+        document.location.reload();
+    }
+
+    function Delete(link) {
+        console.log(link);
+        fetch(link, {
+            method: 'DELETE',
+            headers:{'Content-Type':'application/json', 'Accept': 'application/json'}
+        }).then(t=>t.json()).then(x=> {
+            return x;
+        });
+        document.location.reload();
+    }
+
+    function Put() {
+        fetch("http://localhost:3000/api/pulpits", {
+            method: 'PUT',
+            body: JSON.stringify({pulpit:PULPIT.value, pulpit_name: PULPIT_NAME.value, faculty:FACULTY.value})
+        });
+        document.location.reload();
+    }
+</script>
+<body>
+<table id="table">
+    <tr>
+        <th>PULPIT</th>
+        <th>PULPIT_NAME</th>
+        <th>FACULTY</th>
+        <th>Delete</th>
+    </tr>
+</table>
+<div>
+    <div>
+        <label>PULPIT</label>
+        <input type="text" id="PULPIT" required>
+    </div>
+    <div>
+        <label>PULPIT_NAME</label>
+        <input type="text" id="PULPIT_NAME">
+    </div>
+    <div>
+        <label>FACULTY</label>
+        <input type="faculty" id="FACULTY">
+    </div>
+    <div>
+        <button onclick="Post()">Add</button>
+    </div>
+    <div>
+        <button onclick="Put()">Edit</button>
+    </div>
+</div>
+</body>
+</html>

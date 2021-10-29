@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\db",
+    "\\src\\views",
+    "\\src\\views\\partials",
+    "\\src\\views\\static"
+  ],
+  "SelectedNode": "\\src\\db\\db.js",
+  "PreviewInSolutionExplorer": false
+}

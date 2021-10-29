@@ -1,0 +1,34 @@
+a<html>
+
+    <head>
+        <meta charset="utf-8">
+    </head>
+    
+    <body>
+        <script>
+            async function register() {
+                await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ login: document.getElementById('login').value, password: document.getElementById('password').value,age:document.getElementById('age').value })
+                })
+                    .then((data) => {
+                        return data.json();
+                    })
+                    .then((data) => {
+                        console.log(data);
+                    })
+            }
+        </script>
+        <input id="login" type="text" placeholder="username" name="username" required>
+        <input id="password" type="password" placeholder="password" name="password" required>
+        <input id="age" type="text" placeholder="age" name="age" required>
+    
+        <button type="submit" onclick="register()">register</button>
+        <button type="reset">Cancel</button>
+    </body>
+    
+    </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="sum"></div>
+<div id="mul"></div>
+<div id="sub"></div>
+</body>
+<script>
+  (async () => {
+    const res = fetch('http://localhost:3000/bit.wasm');
+    const {module, instance} = await WebAssembly.instantiateStreaming(res);
+    document.getElementById('sum').innerHTML += `sum: ${instance.exports.sum(2,3)}`
+    document.getElementById('mul').innerHTML += `mul: ${instance.exports.mul(2,3)}`
+    document.getElementById('sub').innerHTML += `sub: ${instance.exports.sub(2,3)}`
+  })()
+</script>
+</html>

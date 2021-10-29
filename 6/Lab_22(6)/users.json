@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "login":"test1",
+        "password":"test",
+        "age":21
+    },
+    {
+        "id":2,
+        "login":"test2",
+        "password":"test",
+        "age":18
+    },
+    {
+        "id":3,
+        "login":"arsenii",
+        "password":"TEST",
+        "age":54
+    }
+]

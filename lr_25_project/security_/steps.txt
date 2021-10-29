@@ -1,0 +1,14 @@
+﻿1. генерация приватного ключа Certification Authority
+openssl genrsa -des3 -out CA-LAB25-LVS.key 2048
+
+2. генерация сертификата CA
+openssl req -x509 -new -key CA-LAB25-LVS.key -days 700 -sha256 -out CA-LAB25-LVS.crt
+
+3. генерация приватного ключа Resource
+openssl genrsa -des3 -out RS-LAB25-LVS.key 2048
+
+4. генерация запроса на сертификат для ресурса
+openssl req -new -key RS-LAB25-LVS.key -out RS-LVS.csr -sha256 -config RS-LAB25-LVS.cfg
+
+5. генерация сертификата для ресурса
+openssl x509 -req -in RS-LVS.csr -CA CA-LAB25-LVS.crt -CAkey CA-LAB25-LVS.key -CAcreateserial -out RS-LVS-CRT.crt -days 365 -sha256 -extensions v3_req -extfile RS-LAB25-LVS.cfg

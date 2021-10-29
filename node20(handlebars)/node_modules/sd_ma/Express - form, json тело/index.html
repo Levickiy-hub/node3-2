@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<form action="/api/addUser" method="POST">
+    <p>
+        <input type="number" placeholder="Id" name="Id" required>
+    </p>
+    <p>
+        <input type="text" placeholder="First name" name="userName" required>
+    </p>
+    <p>
+        <input type="text" placeholder="Second name" name="userSurname" required>
+    </p>
+    <p>
+        <input type="date" placeholder="Date" name="userBirth_date" required>
+    </p>
+    <p>
+        <input type="password" placeholder="Password" name="userPassword" required>
+    </p>
+    <p>
+        <input type="email" placeholder="Email" name="userMail" required>
+    </p>
+    <p>
+        <input type="number" placeholder="Score" name="userScore" required>
+    </p>
+    <button type="submit">Add</button>
+    <button type="reset">Cancel</button>
+</form>
+</body>
+</html>

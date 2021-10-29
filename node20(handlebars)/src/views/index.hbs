@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>{{title}}</title>
+  <meta charset="utf-8" />
+  <link rel='stylesheet' href='./style.css'>
+  <script src="./script.js"></script>
+</head>
+<body>
+<div class="ph-block">
+  <div class="ph-list">
+    {{#getList list}} {{/getList}}
+  </div>
+
+  {{#if updateField}}
+    {{> update_field}}
+  {{/if}}
+
+  <div class="ph-buttons">
+    {{#if mainButtons}}
+      {{> main_page_buttons}}
+    {{/if}}
+    {{#if updateButtons}}
+      {{> update_buttons}}
+    {{/if}}
+    {{#if addButtons}}
+      {{> add_buttons}}
+    {{/if}}
+  </div>
+</div>
+</body>
+</html>
